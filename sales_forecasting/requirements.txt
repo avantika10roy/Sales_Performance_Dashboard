@@ -5,3 +5,4 @@ pandas
 statsmodels==0.14.2
 watchdog==4.0.1
 Werkzeug==3.0.3
+gunicorn
