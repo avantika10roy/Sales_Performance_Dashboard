@@ -1,7 +1,24 @@
-# Sales Data Analysis Dashboard
+# Sales Performance Analysis & BI Dashboard
 
-## Overview
+## 🚀 Overview
 
+This interactive **Sales Performance Dashboard** provides end-to-end analytics for a specialty product company operating across multi-country markets. Built with **Python** and **Flask**, it delivers:
+
+- Data Overview
+- Statistical Summary
+- Data Quality Metrics
+- KPI Metrics
+- Top 3 Countries w.r.t Sales
+- Top 3 Performing Products
+- Different Kind of Analytical Charts and Plots
+---
+
+## 📝 Business Objectives
+
+✅ Identify top-performing **markets** and **products**
+✅ Deliver **actionable insights** through a fully automated **executive summary**
+
+---
 This project analyzes the sales performance of a specialty cookie company operating across multiple international markets. The company manufactures and sells six different cookie varieties in five key markets spanning Asia, Europe, and North America. The dataset covers a critical business period from September 2019 to December 2020, capturing 457 days of operational data during a time that includes both normal business operations and the COVID-19 pandemic impact.
 
 ## Dataset Structure
@@ -142,7 +159,7 @@ The application automatically performs:
 1. **Data Loading**: Secure file upload and format detection
 2. **Quality Assessment**: Missing values, duplicates, and outlier detection
 3. **Data Cleaning**: Date standardization, duplicate removal
-4. **Outlier Handling**: IQR-based outlier treatment for key metrics
+4. **Outlier Handling**: Z-Score-based outlier treatment for key metrics
 5. **Analysis Generation**: Comprehensive statistical and visual analysis
 6. **Dashboard Rendering**: Interactive visualization display
 
@@ -183,12 +200,8 @@ The application automatically performs:
 - **Data Processing**: Pandas, NumPy
 - **Visualizations**: Plotly
 - **Statistical Analysis**: Statsmodels
-- **File Handling**: Werkzeug, OpenPyXL, XLRD
+- **File Handling**: Werkzeug
 
 ## License
 
 This project is available under the MIT License.
-
-## Support
-
-For technical support or questions, create an issue in the project repository with detailed information about your setup and any error messages encountered.
