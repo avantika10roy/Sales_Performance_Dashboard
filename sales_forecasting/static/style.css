@@ -1,0 +1,317 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: aliceblue;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 5px 50px;
+}
+
+input[type="file"]{
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+    font-size: 0.95rem;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button[type="submit"] {
+    padding: 0.6rem 1rem;
+    background-color: #1f6cbe;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+    background-color: #205e9f;
+}
+
+/* Headings */
+
+h1{
+    text-align: center;
+    color: rgb(49, 117, 213);
+    font-size: 36px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h2{
+    text-align: center;
+    padding: 5px;
+    color: rgb(0, 0, 0);
+}
+
+/* Table Overview */
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background-color: #ffffff;
+    border-collapse: collapse;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin: 2rem auto;
+    padding: 1rem 0 1rem 0;
+}
+
+table.styled-table {
+    border-collapse: collapse;
+    margin: 2rem auto;
+    max-width: 95%;
+    font-size: 16px;
+    min-width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.styled-table th, .styled-table td {
+    border: 1px solid #ccc;
+    padding: 0.6rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.styled-table th {
+    background-color: #0c64b6;
+    
+    color: white;
+}
+
+.styled-table tbody tr:nth-child(even) {
+    background-color: #90c9fe;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #ddecfb;
+} 
+
+/* Statistical Summary */
+.statistical-summary {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+table.statistical-summary {
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-size: 16px;
+    min-width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+}
+
+.statistical-summary th, .statistical-summary td {
+    border: 1px solid #ccc;
+    padding: 0.6rem;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.statistical-summary th {
+    background-color: #0c64b6;
+    
+    color: white;
+}
+
+.statistical-summary tbody tr:nth-child(even) {
+    background-color: #90c9fe;
+}
+
+.statistical-summary tbody tr:hover {
+    background-color: #ddecfb;
+} 
+
+/* KPI Metrics */
+/* KPI Metrics & Statistical Summary Side by Side */
+.summary-kpi-combined {
+    display: flex;
+    gap: 20px;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.summary-kpi-combined .statistical-summary {
+    flex: 2;
+    padding: 1rem;
+    background-color: #f2f9ff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.summary-kpi-combined .kpi-results {
+    flex: 1;
+    padding: 1.5rem 2rem;
+    background-color: #f8fbff; /* More pleasant blue-tinted background */
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    font-family: 'Segoe UI', sans-serif;
+    color: #333;
+    max-width: 100%;
+}
+
+.kpi-results h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #003366;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.kpi-results p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0.4rem 0;
+}
+
+.kpi-results strong {
+    color: #004a8f;
+    font-weight: 600;
+}
+
+
+/* Key Metrics in a row of individual boxes */
+.data-metrics {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.data-metrics .metrics {
+    flex: 1 1 calc(25% - 1rem);
+    background-color: #e8f4ff;
+    border-radius: 10px;
+    text-align: center;
+    padding: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 2rem;
+}
+
+.data-metrics .metric-heading {
+    font-size: 0.9rem;
+    color: #333;
+    font-weight: 600;
+}
+
+.data-metrics .metrics br + * {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #00468b;
+}
+
+/* Top 3 Countries and Products - stacked layout */
+.top-3s {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-right: 2rem;
+}
+
+.statistical-summary {
+    width: 100%;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.05);
+}
+
+/* Bar Charts Side by Side */
+.sale-bar {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.sale-bar .bar-country,
+.sale-bar .bar-product {
+    flex: 1;
+    min-width: 300px;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+/* Pie and Grouped Bar Side by Side */
+.pie-groupedbar {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 2rem 0;
+}
+
+.pie-groupedbar .piechart,
+.pie-groupedbar .groupedbar {
+    flex: 1;
+    min-width: 300px;
+    padding: 1rem;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,0.05);
+    overflow-x: auto;
+}
+
+/* Full-width Sales Trend */
+.sale-trend {
+    width: 100%;
+    padding: 1.5rem;
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.07);
+    box-sizing: border-box;
+    margin: 2rem 0;
+    overflow-x: auto;
+}
+
+/* Force the inner Plotly chart to expand */
+.sale-trend > div,
+.sale-trend .plotly-graph-div {
+    width: 100%;
+    height: auto;
+}
+
+.sale-trend iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Center-Aligned Other Charts */
+.other-plots {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem 0;
+    gap: 2rem;
+}
+
+.other-plots > div {
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
+    background-color: #fefefe;
+    border-radius: 10px;
+    box-sizing: border-box;
+    box-shadow: 0 0 6px rgba(0,0,0,0.05);
+}
+

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sales Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class = "container">
+        <h1>Sales Performance Dashboard</h1>
+        <p>This project analyzes the sales performance of a specialty cookie company operating across multiple
+            international markets. The company manufactures and sells six different cookie varieties in five key markets
+            spanning Asia, Europe, and North America. The dataset covers a critical business period from September
+            2019 to December 2020, capturing 457 days of operational data during a time that includes both normal
+            business operations and the COVID-19 pandemic impact.</p>
+        <div class="styled-table">
+            <h2>Data Overview</h2>
+            {{data_overview_tables|safe}}
+        </div>
+        <div class="summary-kpi-combined">
+            <div class="statistical-summary">
+                <h2>Statistical Summary</h2>
+                {{description|safe}}
+            </div>
+            <div class="kpi-results">
+                <h2>KPI Metrics</h2>
+                <p><strong>Column Names: </strong>{{data_columns|safe}}</p>
+                <p><strong>Number of Rows and Columns: </strong>{{rows_columns|safe}}</p>
+                <p><strong>Number of Missing Values: </strong>{{missing_val|safe}}</p>
+                <p><strong>Duplicates Values: </strong>{{duplicates|safe}}</p>
+                <p><strong>Outliers: </strong>{{outliers|safe}}</p>   
+            </div>
+        </div>
+        <h2>Key Metrics</h2>
+        <div class="data-metrics">
+            <div class="metrics"><span class="metric-heading">Total Revenue</span><br>{{revenue_sum|safe}}</div>
+            <div class="metrics"><span class="metric-heading">Average Revenue</span><br>{{revenue_avg|safe}}</div>
+            <div class="metrics"><span class="metric-heading">Profit Margin</span><br>{{profit_margin|safe}}</div>
+            <div class="metrics"><span class="metric-heading">Total Units Sold</span><br>{{total_units|safe}}</div>
+        </div>
+        <div class="top-3s">
+            <div class="top-countries"></div>
+            <div class="statistical-summary">
+                <h2>Top 3 Countries</h2>
+                {{top_countries|safe}}
+            </div>
+            <div class="top-products"></div>
+            <div class="statistical-summary">
+                <h2>Top 3 Products</h2>
+                {{top_products|safe}}
+            </div>
+        </div>
+        <h2>Bar Charts</h2>
+        <div class="sale-bar">
+            <div class="bar-country">{{sale_by_country|safe}}</div>
+            <div class="bar-product">{{sale_by_product|safe}}</div>
+        </div>
+        <h2>Pie Chart and Grouped Bar Chart</h2>
+        <div class="pie-groupedbar">
+            <div class="piechart">{{product_sale_percentage|safe}}</div>
+            <div class="groupedbar">{{product_per_country_sale|safe}}</div>
+        </div>
+        <div class="sale-trend"><h2>Sales Trend</h2>{{sales_trend|safe}}</div>
+        <h2>Other Charts</h2>
+        <div class="other-plots">
+            <div class="bubble-plot">{{bubble_plot|safe}}</div>
+            <div class="heatmap">{{heatmap_plot|safe}}</div>
+            <div class="decomposition">{{seasonal_decomposition|safe}}</div>
+        </div>
+    </div>
+</body>
+</html>
+</body>
+</html>
