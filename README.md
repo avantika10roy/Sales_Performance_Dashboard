@@ -99,6 +99,7 @@ mkdir -p src
 
 ### Step 4: File Organization
 Ensure files are placed in correct locations:
+
 project-root/
 ├── server.py
 ├── config.py
