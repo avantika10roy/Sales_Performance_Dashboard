@@ -430,3 +430,35 @@ if uploaded_file:
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.warning(f"No predictions available for {selected_model}")
+
+        with st.expander(" ", expanded = True):
+            st.subheader("Executive Summary")
+            st.markdown(f"""
+                            ### 🔑 **Key Highlights**
+                            - 🏆 **Top Market by Revenue:** **{summary['top_market']}** (${summary['top_market_revenue']:,.0f})
+                            - 🥇 **Top Product by Revenue:** **{summary['top_product']}** (${summary['top_product_revenue']:,.0f})
+                            - 📊 **Total Transactions:** **{summary['total_transactions']:,}**
+                            - 💵 **Avg Transaction Value:** **${summary['avg_transaction_value']:,.0f}**
+                            - 🌎 **Markets Covered:** **{summary['market_count']} Countries**
+                            - 📦 **Products Portfolio:** **{summary['product_count']} Unique Products**  
+                    """)
+            
+        st.subheader(body = "🎯 Strategic Recommendations")
+
+        col1, col2 = st.columns(spec = 2)
+        
+        with col1:
+            st.markdown(body = "#### 📌 **Market Strategy**")
+            st.markdown(f"""
+            - 📈 **Focus Market Expansion** in **{summary['top_market']}** to further boost high revenue performance.
+            - 🌍 **Cross-Learnings:** Apply successful strategies from **{summary['top_market']}** to underperforming markets.
+            - 🛍️ **Optimize Pricing Strategy** in moderate performing countries to maximize margin.
+            """)
+
+        with col2:
+            st.markdown(body = "#### 📌 **Product Strategy**")
+            st.markdown(f"""
+            - 🚀 **Boost Sales of {summary['top_product']}**, the top revenue product, with targeted promotions.
+            - ⚙️ Balanced Product Strategy: Focus campaigns on high-volume sellers like {summary['top_product']} while monitoring profit margins to avoid over-reliance on low-margin products.
+            - 🎁 **Seasonal Product Development:** Explore new launches based on seasonal peaks.
+            """)
