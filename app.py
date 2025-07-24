@@ -431,6 +431,18 @@ if uploaded_file:
             else:
                 st.warning(f"No predictions available for {selected_model}")
 
+        df = processed_data
+
+        summary = {"top_market"              : df.groupby('Country')['Revenue'].sum().idxmax(),
+                   "top_market_revenue"      : df.groupby('Country')['Revenue'].sum().max(),
+                   "top_product"             : df.groupby('Product')['Revenue'].sum().idxmax(),
+                   "top_product_revenue"     : df.groupby('Product')['Revenue'].sum().max(),
+                   "total_transactions"      : len(df),
+                   "avg_transaction_value"   : df['Revenue'].mean(),
+                   "market_count"            : df['Country'].nunique(),
+                   "product_count"           : df['Product'].nunique()
+        }
+        
         with st.expander(" ", expanded = True):
             st.subheader("Executive Summary")
             st.markdown(f"""
