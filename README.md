@@ -26,10 +26,10 @@ The application consists of eight main modules:
 2. **Data Loader** (`data_loader.py`) - Handles file loading
 3. **Data Preprocessor** (`data_preprocessor.py`) - Data cleaning and validation
 4. **Exploratory Data Analysis** (`data_eda.py`) - Analysis and visualizations
-5. **COVID-19 Analysis** (`covid_analysis`) - Pre-COVID and COVID Time Period Analysis 
-6. **Risk Analysis** (`risk_analysis`) - Understanding Concentration, Volatility and Profitability Risk
-7. **Forecasting** (`forecasting`) - Forecasting future 90 days of Revenue Generation
-8. **Model Fitting** (`model_fitting`) - Fitting various ensemble models, checking accuracy and plot actual vs predicted graph
+5. **COVID-19 Analysis** (`covid_analysis.py`) - Pre-COVID and COVID Time Period Analysis 
+6. **Risk Analysis** (`risk_analysis.py`) - Understanding Concentration, Volatility and Profitability Risk
+7. **Forecasting** (`forecasting.py`) - Forecasting future 90 days of Revenue Generation
+8. **Model Fitting** (`model_fitting.py`) - Fitting various ensemble models, checking accuracy and plot actual vs predicted graph
 
 ## Features
 
