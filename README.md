@@ -100,6 +100,7 @@ mkdir -p src
 ### Step 4: File Organization
 Ensure files are placed in correct locations:
 
+```bash
 project-root/
 ├── server.py
 ├── config.py
@@ -114,6 +115,7 @@ project-root/
     ├── risk_analysis.py
     ├── forecasting.py
     └── model_fitting.py
+```
 
 ### Step 5: Run Application
 ```bash
