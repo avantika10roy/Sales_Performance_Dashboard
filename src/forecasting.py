@@ -1,5 +1,4 @@
 import pandas as pd
-from config import Config
 from prophet import Prophet
 import plotly.graph_objects as go
 from statsmodels.tsa.arima.model import ARIMA
