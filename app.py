@@ -5,7 +5,6 @@ from src.data_loader import DataLoader
 from src.forecasting import Forecasting
 from src.model_fitting import ModelFitter
 from src.risk_analysis import RiskAnalysis
-from werkzeug.utils import secure_filename
 from streamlit import session_state as state
 from src.covid_analysis import CovidAnalysis
 from src.data_preprocessor import DataInspection
@@ -190,7 +189,7 @@ if uploaded_file:
         
         # Display Data Summary 
         st.subheader("General Data Summary")
-        with st.expander("Click to view data summary"):
+        with st.expander("Click to view data summary", expanded=True):
             col1, col2, col3, col4, col5 = st.columns(spec = 5)
             
             with col1:
@@ -240,7 +239,7 @@ if uploaded_file:
 
         # Statistical Summary 
         st.subheader("Statistical Summary")
-        with st.expander("Click to view statistical summary"):
+        with st.expander("Click to view statistical summary",  expanded = True):
             st.dataframe(description, use_container_width = True)
 
         # EDA Plot Visualization
@@ -255,7 +254,7 @@ if uploaded_file:
                             'Decomposition']
         selected_plot = st.sidebar.selectbox("Select a plot", eda_plot_options)
 
-        with st.expander("Click to view the plots"):
+        with st.expander("Click to view the plots", expanded = True):
 
             if selected_plot == 'Bar Chart on Country':
                 st.plotly_chart(eda.barplot_total_sale_by_column('Country'), use_container_width = True)
@@ -283,7 +282,7 @@ if uploaded_file:
 
         # Covid Analysis
         st.subheader("COVID Analysis")
-        with st.expander("Click to view COVID Analysis"):
+        with st.expander("Click to view COVID Analysis", expanded = True):
             col1, col2, col3 = st.columns(3)
             
         with col1:
@@ -317,7 +316,7 @@ if uploaded_file:
                         unsafe_allow_html = True)
             
         st.subheader("Average Sales Trend")
-        with st.expander("Click to view Average Sales Trend During COVID"):
+        with st.expander("Click to view Average Sales Trend During COVID", expanded = True):
             covid_plots = ['Covid Sale Product', 'Covid Sale Country']
             selected_covid_plot = st.sidebar.selectbox("Select a COVID Sale Trend Plot", covid_plots)
             if selected_covid_plot == 'Covid Sale Product':
@@ -328,7 +327,7 @@ if uploaded_file:
                 st.plotly_chart(ca.average_sales_trend(covid, 'Country'), 
                                 use_container_width = True)
         
-        with st.expander("Click to view Average Sales Trend Pre-COVID"):
+        with st.expander("Click to view Average Sales Trend Pre-COVID", expanded = True):
             precovid_plots = ['Precovid Sale Product', 'Precovid Sale Country']
             selected_precovid_plot = st.sidebar.selectbox("Select a Pre-COVID Sale Trend Plot", precovid_plots)
             if selected_precovid_plot == 'Precovid Sale Product':
@@ -341,7 +340,7 @@ if uploaded_file:
         # Risk Analysis
         ra = RiskAnalysis(input_data = processed_data)
         st.subheader("Risk Analysis")
-        with st.expander("Click to view Concentration Risk Analysis"):
+        with st.expander("Click to view Concentration Risk Analysis", expanded = True):
             risk_plots = ['Concentration on Product', 'Concentration on Country', 'Profitability Risk', 'Volatility Risk']
             selected_risk = st.sidebar.selectbox("Select a Risk Analysis", risk_plots)
 
@@ -376,7 +375,8 @@ if uploaded_file:
                 
         if cols[2].button("Exponential Smoothing Forecast"):
                 st.session_state.section = "Exponential Smoothing Forecast"
-        with st.expander("Click to view Forecast"):       
+
+        with st.expander("Click to view Forecast", expanded = True):       
             if st.session_state.section == "ARIMA Forecast":
                 st.plotly_chart(arima_plot, use_container_width = True)
                 
@@ -389,7 +389,9 @@ if uploaded_file:
 
         # Model Fitting
         def train_models(data: pd.DataFrame, target_column: str, models: list, n_splits: int = 5):
-            """Main function for Streamlit or server integration"""
+            """
+            Main function for Streamlit or server integration
+            """
             fitter = ModelFitter(df=data, target_col=target_column, selected_models=models)
             fitter.fit(n_splits=n_splits)
             results_df = fitter.get_results_df()
@@ -412,12 +414,12 @@ if uploaded_file:
 
         # Show bar chart
         st.subheader("Accuracy of Model Fitted")
-        with st.expander("Click to view model accuracy"):
+        with st.expander("Click to view model accuracy", expanded = True):
             st.plotly_chart(accuracy_plot)
             # Show metrics table
             st.dataframe(results_df, use_container_width = True)
 
-        with st.expander("Click to see model actual vs predicted plot"):
+        with st.expander("Click to see model actual vs predicted plot", expanded = True):
             model_names = ['AdaBoost', 'RandomForest', 'Bagging', 'GradientBoosting']
             selected_model = st.sidebar.selectbox("Select Model", model_names, key="model_select_plot")
 
@@ -428,71 +430,3 @@ if uploaded_file:
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.warning(f"No predictions available for {selected_model}")
-
-        st.subheader("Executive Summary")
-        with st.expander("Click to view data analysis summary"):
-            st.markdown("""
-                ### Executive Summary
-                **Project Title:** Interactive Sales Forecasting and Risk Analysis Dashboard
-
-                #### Objective:
-                To create a comprehensive dashboard that enables business stakeholders to upload sales data, explore sales trends, assess business risks, and forecast future revenue using machine learning and time series models.
-
-                #### Project Workflow
-                1. **Data Loading**
-                - Users can upload datasets in .csv, .xls, or .xlsx format.
-
-                2. **Data Preprocessing**
-                - No missing values detected.
-                - 525 duplicate rows were removed (reduced data from 1225 to 700 rows).
-                - 12 outliers were identified and handled.
-                - Dates were converted from Excel's serial format to standard YYYY-MM-DD.
-                - Dataset was sorted chronologically for time-based analysis.
-
-                3. **Exploratory Data Analysis (EDA)**
-                ***Descriptive Metrics:***
-                - Total revenue, average revenue, total units sold, and overall profit margin.
-
-                ***Visual Insights:***
-                - Bar plots for revenue by country and by product.
-                - Pie chart showing product sales distribution.
-                - Grouped bar plot showing units sold per product across countries.
-                - Line chart for product-wise revenue trends over time.
-                - Bubble plot comparing profit vs. revenue based on units sold.
-                - Heatmap of profit distribution across countries and products.
-                - Seasonal decomposition of monthly revenue trends.
-
-                4. **COVID-19 Impact Analysis**      
-                - Data was split into COVID-period and non-COVID period.
-                - Compared average revenue, units sold, and profit margin across both periods.
-                - Plotted average sale trends per product and country during and outside COVID for deeper insights.
-
-                5. **Risk Analysis**
-                - ***Concentration Risk:*** Assessed through product and country dominance using pie charts.
-                - ***Volatility Risk:*** Examined based on revenue and profit fluctuations.
-                - ***Profitability Risk:*** Evaluated using profit margin variability.
-
-                6. **Sales Forecasting**
-                - ***Time Series models used:***
-                        
-                    a. ARIMA (performed best), Prophet, and Exponential Smoothing.
-                        
-                    b. Models compared for forecast reliability and visualized with future revenue trends.
-
-                7. **Machine Learning Model Fitting**
-                - ***Regression models used:***
-                        
-                    a. Random Forest, Gradient Boosting, AdaBoost, Bagging.
-                        
-                    b. Random Forest delivered the highest prediction accuracy.
-                        
-                    c. Accuracy of each model shown in a bar chart and detailed in a results table.
-                        
-                    d. Interactive plots of Actual vs. Predicted values for each model enhance interpretability.
-
-                #### Business Value
-                - Enables strategic decision-making by identifying high-performing products and markets.
-                - Provides actionable insights on how external events (like COVID-19) affect sales.
-                - Forecasts help with resource allocation, inventory planning, and revenue expectations.
-                - Risk analysis equips businesses with tools to minimize financial uncertainty.
-            """)
